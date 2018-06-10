@@ -4,6 +4,9 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import login from '@/components/login'
 import register from '@/components/register'
+import inTheaters  from '@/components/inTheaters'
+import comingSoon  from '@/components/comingSoon'
+
 Vue.use(Router)
 const router = new Router({
  mode: 'history',
@@ -29,6 +32,16 @@ const router = new Router({
    path: '/register',
    name: 'register',
    component: register,
+  },
+  {
+   path: '/inTheaters',
+   name: 'inTheaters',
+   component: inTheaters,
+  },
+  {
+   path: '/comingSoon',
+   name: 'comingSoon',
+   component: comingSoon,
   },
  ]
 });
