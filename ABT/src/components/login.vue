@@ -24,7 +24,6 @@
 <script>
 import register from '@/components/register'
 import axios from '../axios.js'
-
 export default {
  data() {
   var validatePass = (rule, value, callback) => {

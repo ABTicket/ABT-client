@@ -41,9 +41,7 @@ export default {
     'v-header': vHeader
   },
   mounted: function () {
-    // 缓存指针  
     let _this = this;  
-    // 设置一个开关来避免重负请求数据  
     let sw = true;
     this.updateSearch();
   },
@@ -64,7 +62,6 @@ export default {
     },
       getImage(url){
         console.log(url);
-        // 把现在的图片连接传进来，返回一个不受限制的路径
         if(url !== undefined){
           return 'https://images.weserv.nl/?url='+url.substring(7);
         }
@@ -74,7 +71,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   body {
     margin: 0;

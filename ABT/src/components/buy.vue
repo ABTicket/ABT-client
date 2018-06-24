@@ -15,10 +15,8 @@
           <p>用户名称:{{$store.state.username}}</p>
           <p>电影名称:{{movieMsg.title}}</p>
           <span class="">观影时间</span>
-          <el-date-picker v-model="calendar.buydate" type="date" placeholder="选择日期" value-format="yyyy-MM-dd" format="yyyy 年 MM 月 dd 日"></el-date-picker>
-          <span class="">购票时间</span>
-          <el-date-picker v-model="calendar.nowdate" type="date" placeholder="选择日期" value-format="yyyy-MM-dd" format="yyyy 年 MM 月 dd 日"></el-date-picker>
-          <p>购买时间:{{movieMsg.title}}</p>
+          <el-date-picker v-model="calendar.buydate" type="date" placeholder="选择日期" :picker-options="pickerOptions0" value-format="yyyy-MM-dd" format="yyyy 年 MM 月 dd 日"></el-date-picker>
+          <p>购买时间:{{nowday()}}</p>
           <p>座次号:{{movieMsg.title}}</p>
         </div>
       </section>
@@ -131,7 +129,17 @@ export default {
           'genres': [],
           comments_count: '',
           popular_reviews: ''
-        }
+        },
+
+        pickerOptions0: {
+          disabledDate(time) {
+            //return time.getTime() < Date.now() - 8.64e6
+            let curDate = (new Date()).getTime();
+            let seven = 7 * 24 * 3600 * 1000;
+            let sevenday = curDate + seven;
+            return time.getTime() < Date.now() || time.getTime() > sevenday;
+          }
+        },  
       }
     },
   mounted: function () {
@@ -160,6 +168,11 @@ export default {
         return 'https://images.weserv.nl/?url='+url.substring(7);
       }
     }, 
+
+     nowday() {
+      let d = (new Date());
+      return (d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
+    },
   //提交表单
   submitForm(formName) {
      axios.postIndent(this.postIndent)

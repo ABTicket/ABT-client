@@ -12,7 +12,7 @@
 <script>
 import axios from '../axios.js'
 export default {
- name: 'HelloWorld',
+ name: 'Home',
  data () {
   return {
    indents:''

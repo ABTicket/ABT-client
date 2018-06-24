@@ -70,8 +70,6 @@ export default {
          message: data.Body.Msg
         });
      })
-
-
     } else {
      console.log('error submit!!');
      return false;
