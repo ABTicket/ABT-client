@@ -3,11 +3,11 @@
   <el-tabs v-model="activeName" @tab-click="handleClick">
    <el-tab-pane label="登录" name="first">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-     <el-form-item label="名称" prop="name">
-      <el-input v-model="ruleForm.name"></el-input>
+     <el-form-item label="名称" prop="Name">
+      <el-input v-model="ruleForm.Name"></el-input>
      </el-form-item>
-     <el-form-item label="密码" prop="pass">
-      <el-input type="password" v-model="ruleForm.pass" auto-complete="off"></el-input>
+     <el-form-item label="密码" prop="Password">
+      <el-input type="password" v-model="ruleForm.Password" auto-complete="off"></el-input>
      </el-form-item>
      <el-form-item>
       <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
@@ -23,6 +23,8 @@
 </template>
 <script>
 import register from '@/components/register'
+import axios from '../axios.js'
+
 export default {
  data() {
   var validatePass = (rule, value, callback) => {
@@ -38,16 +40,16 @@ export default {
   return {
    activeName: 'first',
    ruleForm: {
-    name: '',
-    pass: '',
+    Name: '',
+    Password: '',
     checkPass: '',
    },
    rules: {
-    name: [
+    Name: [
      { required: true, message: '请输入您的名称', trigger: 'blur' },
      { min: 2, max: 5, message: '长度在 2 到 5 个字符', trigger: 'blur' }
     ],
-    pass: [
+    Password: [
      { required: true, validator: validatePass, trigger: 'blur' }
     ]
    },
@@ -65,11 +67,29 @@ export default {
   submitForm(formName) {
    this.$refs[formName].validate((valid) => {
     if (valid) {
-     this.$message({
-      type: 'success',
-      message: '登录成功'
+     axios.userLogin(this.ruleForm)
+      .then(({ data }) => {
+   //账号不存在
+   //账号存在
+      if (data.statusCode == '200') {
+       this.$message({
+        message: data.Body.Msg
+       });
+    //拿到返回的token和username，并存到store
+       let token = data.id;
+       let username = data.username;
+       this.$store.dispatch('UserLogin', token);
+       this.$store.dispatch('UserName', username);
+    //跳到目标页
+       this.$router.push('Home');
+
+
+      } else {
+        this.$message({
+          message: data.Body.Msg
+        });
+      }
      });
-     this.$router.push('Home');
     } else {
      console.log('error submit!!');
      return false;

@@ -9,7 +9,7 @@
             <div class="co-posters"><img :src="getImage(item.images.small)" :alt="item.alt"></div>
             <div class="co-movieMsg">
               <h2>{{ item.title }}</h2>
-              <p>导演: {{ item.directors[0].name}}</p>
+              <p v-if="item.directors[0]">导演: {{ item.directors[0].name}}</p>
               <p>
                 主演:<span v-if="item.casts[0]">, {{ item.casts[0].name }}</span>
                 <span v-if="item.casts[1]">, {{ item.casts[1].name }}</span>
@@ -56,8 +56,7 @@ export default {
   },
   methods: {
     showMoreMsg: function (str) {
-      const path = '/movie/' + str
-      this.$router.push({path: path})
+      this.$router.push({path: '/MovieMsg',query:{id: str}});
     },
       getImage(url){
         console.log(url);

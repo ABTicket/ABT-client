@@ -6,7 +6,10 @@ import login from '@/components/login'
 import register from '@/components/register'
 import inTheaters  from '@/components/inTheaters'
 import comingSoon  from '@/components/comingSoon'
-
+import searchPage  from '@/components/searchPage'
+import back  from '@/components/back'
+import MovieMsg  from '@/components/MovieMsg'
+import buy  from '@/components/buy'
 Vue.use(Router)
 const router = new Router({
  mode: 'history',
@@ -42,6 +45,26 @@ const router = new Router({
    path: '/comingSoon',
    name: 'comingSoon',
    component: comingSoon,
+  },
+  {
+   path: '/searchPage',
+   name: 'searchPage',
+   component: searchPage,
+  },
+  {
+   path: '/back',
+   name: 'back',
+   component: back,
+  },
+  {
+   path: '/MovieMsg',
+   name: 'MovieMsg',
+   component: MovieMsg,
+  },
+  {
+   path: '/buy',
+   name: 'buy',
+   component: buy,
   },
  ]
 });

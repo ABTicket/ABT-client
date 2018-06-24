@@ -14,6 +14,7 @@ Vue.prototype.HOST = '/api'
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

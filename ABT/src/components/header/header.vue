@@ -7,8 +7,8 @@
           <div>查影讯，上此站电影就够了！</div>
         </div>
       </div>
-      <div class="v-header-input" @click="search">
-        <input class="v-inp" type="text" v-model.trim="query" placeholder="请输入电影名"></input>
+      <div class="v-header-input">
+        <input class="v-inp" type="text" v-model.trim="query" placeholder="请输入电影名" @keyup.enter="search"></input>
       </div>
     </div>
     <div class="v-nav-bar">
@@ -30,7 +30,7 @@
     },
     methods: {
       search: function () {
-        this.$router.push({path: '/searchPage'})
+        this.$router.push({path: '/back',query:{name: this.query}})
       }
     }
   }

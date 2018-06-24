@@ -9,7 +9,7 @@
             <div class="co-posters"><img :src="getImage(item.images.small)" :alt="item.alt"></div>
             <div class="co-movieMsg">
               <h2>{{ item.title }}</h2>
-              <p>导演: {{ item.directors[0].name}}</p>
+              <p v-if="item.directors[0]">导演: {{ item.directors[0].name}}</p>
               <p>
                 主演:<span v-if="item.casts[0]">, {{ item.casts[0].name }}</span>
                 <span v-if="item.casts[1]">, {{ item.casts[1].name }}</span>
@@ -45,19 +45,22 @@ export default {
     let _this = this;  
     // 设置一个开关来避免重负请求数据  
     let sw = true;
-
-    var url = this.HOST + '/movie/coming_soon'
-    axios.get(url).then(res => {
-      this.guodu = false;
-      this.coming_soon_data_body_subjects = res.data.subjects;
-    },res => {
-      console.info('调用失败');
-    });
+    this.updateSearch();
   },
   methods: {
+    updateSearch(){
+      this.val = this.$route.query.name
+
+      var url = this.HOST + '/movie/'+ 'search?q=' + this.val
+      axios.get(url).then(res => {
+       this.guodu = false; 
+       this.coming_soon_data_body_subjects = res.data.subjects;
+      },res => {
+      console.info('调用失败');
+      });
+    },
     showMoreMsg: function (str) {
-      const path = '/movie/' + str
-      this.$router.push({path: path})
+      this.$router.push({path: '/MovieMsg',query:{id: str}});
     },
       getImage(url){
         console.log(url);

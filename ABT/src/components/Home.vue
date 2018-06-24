@@ -1,10 +1,9 @@
-//Helloworld.vue
 <template>
  <p class="hello">
   <ul>
-   <li v-for="(item,index) in users" :key="item._id">
+   <li v-for="(item,index) in indents" :key="item._id">
     {{ index + 1 }}.{{ item.username }}
-    <el-button @click="del_user(index)">删除</el-button>
+    <el-button @click="view_Indent(index)">删除</el-button>
    </li>
   </ul>
   <el-button type="primary" @click="logout()">注销</el-button>
@@ -16,11 +15,11 @@ export default {
  name: 'HelloWorld',
  data () {
   return {
-   users:''
+   indents:''
   }
  },
  created(){
-  axios.getUser().then((response) => {
+  axios.getIndent(this.$store.state.username).then((response) => {
    if(response.status === 401){
     //不成功跳转回登录页
     this.$router.push('/login');
@@ -28,26 +27,13 @@ export default {
     this.$store.dispatch('UserLogout');
    }else{
     //成功了就把data.result里的数据放入users，在页面展示
-    this.users = response.data.result;
+    this.indents = response.data.indents;
    }
   })
- },
+ }, 
  methods:{
-  del_user(index, event){
-   let thisID = {
-    id:this.users[index]._id
-   }
-   axios.delUser(thisID)
-    .then(response => {
-     this.$message({
-      type: 'success',
-      message: '删除成功'
-     });
-     //移除节点
-     this.users.splice(index, 1);
-    }).catch((err) => {
-     console.log(err);
-   });
+  view_Indent(index, event){
+   
   },
   logout(){
    //清除token

@@ -21,38 +21,19 @@ instance.interceptors.request.use(
  }
 );
 //respone拦截器
-instance.interceptors.response.use(
- response => {
-  return response;
- },
- error => { //默认除了2XX之外的都是错误的，就会走这里
-  if (error.response) {
-   switch (error.response.status) {
-    case 401:
-     router.replace({ //跳转到登录页面
-      path: '/login',
-      query: { redirect: router.currentRoute.fullPath } // 将跳转的路由path作为参数，登录成功后跳转到该路由
-     });
-   }
-  }
-  return Promise.reject(error.response);
- }
-);
 export default {
   //用户注册
   userRegister(data){
-    return instance.post('/api/register', data);
+    return instance.post('/user/register', data);
   },
   //用户登录
   userLogin(data){
-    return instance.post('/api/login', data);
+    return instance.post('/user/login', data);
   },
-  //获取用户
-  getUser(){
-    return instance.get('/api/user');
+  postIndent(data){
+    return instance.post('/api/postindent',data);
   },
-  //删除用户
-  delUser(data){
-    return instance.post('/api/delUser', data);
+  getIndent(data){
+    return instance.post('/api/getindent', data);
   }
 }
