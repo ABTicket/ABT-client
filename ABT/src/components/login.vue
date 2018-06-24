@@ -70,13 +70,13 @@ export default {
       .then(({ data }) => {
    //账号不存在
    //账号存在
-      if (data.statusCode == '200') {
+      if (data.Code == '200') {
        this.$message({
-        message: data.Body.Msg
+        message: data.Msg
        });
     //拿到返回的token和username，并存到store
        let token = data.id;
-       let username = data.username;
+       let username = data.Name;
        this.$store.dispatch('UserLogin', token);
        this.$store.dispatch('UserName', username);
     //跳到目标页
@@ -85,7 +85,7 @@ export default {
 
       } else {
         this.$message({
-          message: data.Body.Msg
+          message: data.Msg
         });
       }
      });
