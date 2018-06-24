@@ -67,7 +67,7 @@ export default {
      axios.userRegister(this.ruleForm)
       .then(({data}) => {
         this.$message({
-         message: data.Body.Msg
+         message: data.Msg
         });
      })
     } else {
