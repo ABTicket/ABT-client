@@ -6,6 +6,7 @@ import router from './router'
 var instance = axios.create({
  timeout: 5000, //请求超过5秒即超时返回错误
  headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+ baseURL:'http://118.89.35.145:9998/api',
 });
 //request拦截器
 instance.interceptors.request.use(

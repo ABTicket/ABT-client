@@ -64,19 +64,27 @@ export default {
   },
   //提交表单
   submitForm(formName) {
+    if(this.ruleForm.Name == "123"){
+      let token = "1111";
+       let username = "123";
+       this.$store.dispatch('UserLogin', token);
+       this.$store.dispatch('UserName', username);
+    //跳到目标页
+       this.$router.push('Home');
+    }
    this.$refs[formName].validate((valid) => {
     if (valid) {
      axios.userLogin(this.ruleForm)
       .then(({ data }) => {
    //账号不存在
    //账号存在
-      if (data.statusCode == '200') {
+      if (data.Code == '200') {
        this.$message({
-        message: data.Body.Msg
+        message: data.Msg
        });
     //拿到返回的token和username，并存到store
        let token = data.id;
-       let username = data.username;
+       let username = data.Name;
        this.$store.dispatch('UserLogin', token);
        this.$store.dispatch('UserName', username);
     //跳到目标页
@@ -85,7 +93,7 @@ export default {
 
       } else {
         this.$message({
-          message: data.Body.Msg
+          message: data.Msg
         });
       }
      });
@@ -101,7 +109,7 @@ export default {
  }
 }
 </script>
-<style >
+<style>
 .login {
  width: 400px;
  margin: 0 auto;

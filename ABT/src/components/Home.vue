@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <v-UserInfo></v-UserInfo>
  <p class="hello">
   <ul>
    <li v-for="(item,index) in indents" :key="item._id">
@@ -8,9 +10,11 @@
   </ul>
   <el-button type="primary" @click="logout()">注销</el-button>
  </p>
+</div>
 </template>
 <script>
 import axios from '../axios.js'
+import vUserInfo from './UserInfo'
 export default {
  name: 'Home',
  data () {
@@ -18,6 +22,9 @@ export default {
    indents:''
   }
  },
+ components: {
+    'v-UserInfo': vUserInfo
+  },
  created(){
   axios.getIndent(this.$store.state.username).then((response) => {
    if(response.status === 401){
@@ -41,12 +48,10 @@ export default {
    if (!this.$store.state.token) {
     this.$router.push('/login')
     this.$message({
-     type: 'success',
      message: '注销成功'
     })
    } else {
     this.$message({
-     type: 'info',
      message: '注销失败'
     })
    }
