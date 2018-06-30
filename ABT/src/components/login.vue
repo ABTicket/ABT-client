@@ -64,14 +64,6 @@ export default {
   },
   //提交表单
   submitForm(formName) {
-    if(this.ruleForm.Name == "123"){
-      let token = "1111";
-       let username = "123";
-       this.$store.dispatch('UserLogin', token);
-       this.$store.dispatch('UserName', username);
-    //跳到目标页
-       this.$router.push('Home');
-    }
    this.$refs[formName].validate((valid) => {
     if (valid) {
      axios.userLogin(this.ruleForm)
@@ -83,8 +75,8 @@ export default {
         message: data.Msg
        });
     //拿到返回的token和username，并存到store
-       let token = data.id;
-       let username = data.Name;
+       let token = data.Id;
+       let username = this.ruleForm.Name;
        this.$store.dispatch('UserLogin', token);
        this.$store.dispatch('UserName', username);
     //跳到目标页

@@ -1,8 +1,8 @@
-1¡¢ÔËÐÐ:git cloneÏîÄ¿ºó£¬ÃüÁîÐÐ½øÈëABTÎÄ¼þ¼Ð£¬ÊäÈënpm install£¬µÈ´ýÍê³É£¬ÔÙÊäÈënpm run dev£¬¿ªÊ¼ÔËÐÐ
-2¡¢µÇÂ½:´ò¿ªä¯ÀÀÆ÷µÇÂ½localhost:8080£¬×Ô¶¯µ¼º½µ½µÇÂ½½çÃæ,ÊäÈëÏàÓ¦ÐÅÏ¢ºó£¬µã»÷µÇÂ½£¬post localhost:8080/user/login±íµ¥£¬ÀïÃæ¸ñÊ½£º
+1ã€è¿è¡Œ:git cloneé¡¹ç›®åŽï¼Œå‘½ä»¤è¡Œè¿›å…¥ABTæ–‡ä»¶å¤¹ï¼Œè¾“å…¥npm installï¼Œç­‰å¾…å®Œæˆï¼Œå†è¾“å…¥npm run devï¼Œå¼€å§‹è¿è¡Œ
+2ã€ç™»é™†:æ‰“å¼€æµè§ˆå™¨ç™»é™†localhost:8080ï¼Œè‡ªåŠ¨å¯¼èˆªåˆ°ç™»é™†ç•Œé¢,è¾“å…¥ç›¸åº”ä¿¡æ¯åŽï¼Œç‚¹å‡»ç™»é™†ï¼Œpost localhost:8080/user/loginè¡¨å•ï¼Œé‡Œé¢æ ¼å¼ï¼š
   ruleForm: {
     Name: '',
     Password: '',
     checkPass: '',
    },
-3¡¢×¢²á:×¢²áµÄÊ±ºò£¬post localhost:8080/user/register,ÄÚÈÝºÍÉÏÊöÒ»ÖÂ
+3ã€æ³¨å†Œ:æ³¨å†Œçš„æ—¶å€™ï¼Œpost localhost:8080/user/register,å†…å®¹å’Œä¸Šè¿°ä¸€è‡´

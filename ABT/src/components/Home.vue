@@ -1,34 +1,43 @@
 <template>
   <div>
-    <v-UserInfo></v-UserInfo>
- <p class="hello">
-  <ul>
-   <li v-for="(item,index) in indents" :key="item._id">
-    {{ index + 1 }}.{{ item.username }}
-    <el-button @click="view_Indent(index)">删除</el-button>
-   </li>
-  </ul>
-  <el-button type="primary" @click="logout()">注销</el-button>
- </p>
+    <div class="container" id="Home">
+      <div class="left">
+        <UserInfo></UserInfo>
+        <UserMenu></UserMenu>
+
+        <div class="content">
+          <ul>
+            <li v-for="(item,index) in indents" :key="item._id">
+              {{ index + 1 }}.{{ item.Filmname }}
+              <el-button @click="view_Indent(index)">查看</el-button>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
 </div>
 </template>
 <script>
 import axios from '../axios.js'
-import vUserInfo from './UserInfo'
+import UserInfo from './UserInfo.vue'
+import UserMenu from './userMenu.vue'
 export default {
  name: 'Home',
  data () {
   return {
-   indents:''
+   indents:[],
   }
  },
  components: {
-    'v-UserInfo': vUserInfo
+    UserInfo: UserInfo,
+    UserMenu: UserMenu
   },
+
  created(){
   axios.getIndent(this.$store.state.username).then((response) => {
-   if(response.status === 401){
-    //不成功跳转回登录页
+   if(response.Code === 200){
+    indents = response.data.Data;
     this.$router.push('/login');
     //并且清除掉这个token
     this.$store.dispatch('UserLogout');
@@ -83,4 +92,8 @@ a {
  width: 400px;
  margin: 60px auto 0 auto;
 }
+.container{padding-top: 40px; width:1170px; margin: 0 auto; padding-bottom: 20px; overflow: hidden;}
+.left{display: inline-block;}
+.content{background: #fff;vertical-align: top; display: inline-block; width: 850px; height: 935px; margin-left: 20px; overflow-y: auto;overflow: hidden;}
+.content-main{margin: 20px; text-align: left;}
 </style>
