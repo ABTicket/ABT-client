@@ -3,8 +3,8 @@
     <div class="v-header">
       <div class="v-header-logo">
         <div class="v-load-title">
-          <h3>电影</h3>
-          <div>查影讯，上此站电影就够了！</div>
+          <h3>北极光电影</h3>
+          <div>查影讯，来ABTicket！</div>
         </div>
       </div>
       <div class="v-header-input">
@@ -63,19 +63,19 @@
     line-height: 100%;
   }
   .v-load-title h3 {
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 700;
     color: #333;
   }
   .v-load-title div {
-    font-size: 12px;
-    color: #999;
+    font-size: 16px;
+    color: #C0C0C0;
   }
   .v-nav-bar {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    background-color: #df2d2d;
+    background-color: #CC00CC;
   }
   .v-nav {
     flex: 1;
@@ -83,8 +83,8 @@
     text-decoration: none;
     height: 35px;
     line-height: 35px;
-    font-size: 20px;
-    color: #F9FAFC;
+    font-size: 30px;
+    color: #F8F8F8;
   }
   .v-inp {
     width: 100%;

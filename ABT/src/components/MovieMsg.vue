@@ -176,7 +176,7 @@ import axios from 'axios'
     display: flex;
     height: 50px;
     width: 100%;
-    background-color: #e54847;
+    background-color: #CC00CC;
     padding: 6px;
     box-sizing: border-box;
   }
@@ -238,7 +238,7 @@ import axios from 'axios'
     height: 30px;
     color: white;
     border-radius: 5px;
-    background-color: #e54847;
+    background-color: #CC00CC;
   }
   .price-buy {
     display: flex;
@@ -256,7 +256,7 @@ import axios from 'axios'
     height: 30px;
     color: white;
     border-radius: 5px;
-    background-color: #e54847;
+    background-color: #CC00CC;
   }
   .v-buy{
 
@@ -269,7 +269,7 @@ import axios from 'axios'
     height: 30px;
     color: white;
     border-radius: 5px;
-    background-color: #e54847;
+    background-color: #CC00CC;
   }
   .msg-summary {
     padding: 10px;
